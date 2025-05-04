@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Tableau des lettres</title>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.4.1/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.html5.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.4.1/css/buttons.dataTables.min.css">
+</head>
+<body>
+    <h1>Lettres de Catherine de Médicis</h1>
+    <table id="lettres" class="display" style="width:100%">
+        <thead></thead>
+        <tbody></tbody>
+    </table>
+
+    <script>
+    $(document).ready(function () {
+        $.ajax({
+            url: "https://docs.google.com/spreadsheets/d/e/2PACX-1vS1Bh2eu51RSgKp_vC4nGopFwwzVxs80-cj5uk8Cy8qtdZe07dr-BIc5ifCar_h_gwgqiThneVbM4xJ/pub?gid=467683816&single=true&output=csv",
+            dataType: "text",
+            success: function (data) {
+                const rows = data.split("\n").map(row => row.split(","));
+                const headers = rows[0];
+                const body = rows.slice(1);
+
+                let thead = "<tr>" + headers.map(h => "<th>" + h + "</th>").join("") + "</tr>";
+                let tbody = body.map(r => "<tr>" + r.map(c => "<td>" + c + "</td>").join("") + "</tr>").join("");
+
+                $("#lettres thead").html(thead);
+                $("#lettres tbody").html(tbody);
+
+                $("#lettres").DataTable({
+                    dom: 'Bfrtip',
+                    buttons: ['csvHtml5', 'excelHtml5']
+                });
+            }
+        });
+    });
+    </script>
+
+    <!-- Ce code s'inspire du modèle de Philippe Gambette : https://github.com/PhilippeGambette/visualisation-donnees-google-sheets -->
+</body>
+</html>
