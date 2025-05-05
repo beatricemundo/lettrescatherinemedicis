@@ -114,12 +114,58 @@
     url_page: -1
 };
 
+        const monthTranslations = {
+    fr: {
+        janvier: "janvier",
+        février: "février",
+        mars: "mars",
+        avril: "avril",
+        mai: "mai",
+        juin: "juin",
+        juillet: "juillet",
+        août: "août",
+        septembre: "septembre",
+        octobre: "octobre",
+        novembre: "novembre",
+        décembre: "décembre"
+    },
+    it: {
+        janvier: "gennaio",
+        février: "febbraio",
+        mars: "marzo",
+        avril: "aprile",
+        mai: "maggio",
+        juin: "giugno",
+        juillet: "luglio",
+        août: "agosto",
+        septembre: "settembre",
+        octobre: "ottobre",
+        novembre: "novembre",
+        décembre: "dicembre"
+    },
+    en: {
+        janvier: "January",
+        février: "February",
+        mars: "March",
+        avril: "April",
+        mai: "May",
+        juin: "June",
+        juillet: "July",
+        août: "August",
+        septembre: "September",
+        octobre: "October",
+        novembre: "November",
+        décembre: "December"
+    }
+};
+
         function setLanguage(lang) {
             document.getElementById("html-root").setAttribute("lang", lang);
             document.getElementById("page-title").innerText = translations[lang].pageTitle;
             document.getElementById("page-title-h1").innerText = translations[lang].h1;
             document.getElementById("btn-textes").innerText = translations[lang].btnTextes;
             document.getElementById("btn-home").innerText = translations[lang].btnHome;
+            updateDateColumn(lang);
             updateTableHeaders(lang);
         }
 
@@ -132,6 +178,25 @@
             });
         }
 
+
+        function updateDateColumn(lang) {
+    if (columnMap.date === -1) return;
+
+    $("#lettres tbody tr").each(function () {
+        const $cells = $(this).find("td");
+        const $cell = $cells.eq(columnMap.date);
+        let originalText = $cell.text();
+
+        // Prova a tradurre il mese solo se contiene testo
+        if (originalText) {
+            Object.keys(monthTranslations.fr).forEach(frenchMonth => {
+                const regex = new RegExp(`\\b${frenchMonth}\\b`, "gi");
+                originalText = originalText.replace(regex, monthTranslations[lang][frenchMonth]);
+            });
+            $cell.text(originalText);
+        }
+    });
+}
 
         $(document).ready(function () {
             $.ajax({
