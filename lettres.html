@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" id="html-root">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tableau des lettres</title>
+    <title id="page-title">Tableau des lettres</title>
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.css">
     <link rel="stylesheet" href="style.css">
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
@@ -13,13 +13,13 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.4.1/css/buttons.dataTables.min.css">
 </head>
 <body>
-     <div class="lang-selector">
+    <div class="lang-selector">
         <button onclick="setLanguage('fr')" aria-label="Français">🇫🇷</button>
         <button onclick="setLanguage('it')" aria-label="Italiano">🇮🇹</button>
         <button onclick="setLanguage('en')" aria-label="English">🇺🇸</button>
     </div>
     
-    <h1>Lettres de Catherine de Médicis</h1>
+    <h1 id="page-title-h1">Lettres de Catherine de Médicis</h1>
     
     <table id="lettres" class="display" style="width:100%">
         <thead></thead>
@@ -32,126 +32,123 @@
     </div>
 
     <script>
-    const translations = {
-        fr: {
-            pageTitle: "Tableau des lettres",
-            h1: "Lettres de Catherine de Médicis",
-            btnTextes: "Explorer les textes des lettres",
-            btnHome: "Accueil du projet"
-        },
-        it: {
-            pageTitle: "Tabella delle lettere",
-            h1: "Lettere di Caterina de' Medici",
-            btnTextes: "Esplora i testi delle lettere",
-            btnHome: "Home del progetto"
-        },
-        en: {
-            pageTitle: "Letter table",
-            h1: "Letters of Catherine de' Medici",
-            btnTextes: "Explore the letter texts",
-            btnHome: "Project homepage"
-        }
-    };
-
-    const columnTranslations = {
-        fr: {
-            date: "Date",
-            lieu: "Lieu",
-            destinataire_s: "Destinataire(s)",
-            destinataire1: "Destinataire 1",
-            destinataire2: "Destinataire 2"
-        },
-        it: {
-            date: "Data",
-            lieu: "Luogo",
-            destinataire_s: "Destinatario(i)",
-            destinataire1: "Destinatario 1",
-            destinataire2: "Destinatario 2"
-        },
-        en: {
-            date: "Date",
-            lieu: "Place",
-            destinataire_s: "Recipient(s)",
-            destinataire1: "Recipient 1",
-            destinataire2: "Recipient 2"
-        }
-    };
-
-    let columnMap = {
-        date: -1,
-        lieu: -1,
-        destinataire_s: -1,
-        destinataire1: -1,
-        destinataire2: -1
-    };
-
-    function setLanguage(lang) {
-        document.getElementById("html-root").setAttribute("lang", lang);
-        document.getElementById("page-title").innerText = translations[lang].pageTitle;
-        document.getElementById("page-title-h1").innerText = translations[lang].h1;
-        document.getElementById("btn-textes").innerText = translations[lang].btnTextes;
-        document.getElementById("btn-home").innerText = translations[lang].btnHome;
-        updateTableHeaders(lang);
-    }
-
-    function updateTableHeaders(lang) {
-        $("#lettres thead th").each(function (index) {
-            for (const key in columnMap) {
-                if (columnMap[key] === index) {
-                    $(this).text(columnTranslations[lang][key]);
-                }
+        const translations = {
+            fr: {
+                pageTitle: "Tableau des lettres",
+                h1: "Lettres de Catherine de Médicis",
+                btnTextes: "Explorer les textes des lettres",
+                btnHome: "Accueil du projet"
+            },
+            it: {
+                pageTitle: "Tabella delle lettere",
+                h1: "Lettere di Caterina de' Medici",
+                btnTextes: "Esplora i testi delle lettere",
+                btnHome: "Home del progetto"
+            },
+            en: {
+                pageTitle: "Letter table",
+                h1: "Letters of Catherine de' Medici",
+                btnTextes: "Explore the letter texts",
+                btnHome: "Project homepage"
             }
-        });
-    }
+        };
 
-    <script>
-    $(document).ready(function () {
-        $.ajax({
-            url: "https://docs.google.com/spreadsheets/d/e/2PACX-1vS1Bh2eu51RSgKp_vC4nGopFwwzVxs80-cj5uk8Cy8qtdZe07dr-BIc5ifCar_h_gwgqiThneVbM4xJ/pub?gid=467683816&single=true&output=csv",
-            dataType: "text",
-            success: function (data) {
-                const rows = data.split("\n").map(row => row.split(","));
-                const headers = rows[0];
-                const body = rows.slice(1);
+        const columnTranslations = {
+            fr: {
+                date: "Date",
+                lieu: "Lieu",
+                destinataire_s: "Destinataire(s)",
+                destinataire1: "Destinataire 1",
+                destinataire2: "Destinataire 2"
+            },
+            it: {
+                date: "Data",
+                lieu: "Luogo",
+                destinataire_s: "Destinatario(i)",
+                destinataire1: "Destinatario 1",
+                destinataire2: "Destinatario 2"
+            },
+            en: {
+                date: "Date",
+                lieu: "Place",
+                destinataire_s: "Recipient(s)",
+                destinataire1: "Recipient 1",
+                destinataire2: "Recipient 2"
+            }
+        };
 
-                // Mappa colonne
-                headers.forEach((h, index) => {
-                    const key = h.trim().toLowerCase().replace(/\s+/g, "_");
-                    if (columnMap.hasOwnProperty(key)) {
-                        columnMap[key] = index;
+        let columnMap = {
+            date: -1,
+            lieu: -1,
+            destinataire_s: -1,
+            destinataire1: -1,
+            destinataire2: -1
+        };
+        function setLanguage(lang) {
+            document.getElementById("html-root").setAttribute("lang", lang);
+            document.getElementById("page-title").innerText = translations[lang].pageTitle;
+            document.getElementById("page-title-h1").innerText = translations[lang].h1;
+            document.getElementById("btn-textes").innerText = translations[lang].btnTextes;
+            document.getElementById("btn-home").innerText = translations[lang].btnHome;
+            updateTableHeaders(lang);
+        }
+
+        function updateTableHeaders(lang) {
+            $("#lettres thead th").each(function (index) {
+                for (const key in columnMap) {
+                    if (columnMap[key] === index) {
+                        $(this).text(columnTranslations[lang][key]);
                     }
-                });
+                }
+            });
+        }
 
-                let thead = "<tr>" + headers.map(h => "<th>" + h + "</th>").join("") + "</tr>";
-                let tbody = body.map(r => {
-                    return "<tr>" + r.map((c, i) => {
-                        const header = headers[i] ? headers[i].trim().toLowerCase() : "";
-                        const cell = c.trim();
+        $(document).ready(function () {
+            $.ajax({
+                url: "https://docs.google.com/spreadsheets/d/e/2PACX-1vS1Bh2eu51RSgKp_vC4nGopFwwzVxs80-cj5uk8Cy8qtdZe07dr-BIc5ifCar_h_gwgqiThneVbM4xJ/pub?gid=467683816&single=true&output=csv",
+                dataType: "text",
+                success: function (data) {
+                    const rows = data.split("\n").map(row => row.split(","));
+                    const headers = rows[0];
+                    const body = rows.slice(1);
 
-                        if (header === "url page" && cell.startsWith("http")) {
-                            return `<td><a href="${cell}" target="_blank">${cell}</a></td>`;
-                        } else {
-                            return `<td>${cell}</td>`;
+                    // Mappa colonne
+                    headers.forEach((h, index) => {
+                        const key = h.trim().toLowerCase().replace(/\s+/g, "_");
+                        if (columnMap.hasOwnProperty(key)) {
+                            columnMap[key] = index;
                         }
-                    }).join("") + "</tr>";
-                }).join("");
+                    });
 
-                $("#lettres thead").html(thead);
-                $("#lettres tbody").html(tbody);
+                    let thead = "<tr>" + headers.map(h => "<th>" + h + "</th>").join("") + "</tr>";
+                    let tbody = body.map(r => {
+                        return "<tr>" + r.map((c, i) => {
+                            const header = headers[i] ? headers[i].trim().toLowerCase() : "";
+                            const cell = c.trim();
 
-                $("#lettres").DataTable({
-                    dom: 'Bfrtip',
-                    buttons: ['csvHtml5', 'excelHtml5']
-                });
+                            if (header === "url page" && cell.startsWith("http")) {
+                                return `<td><a href="${cell}" target="_blank">${cell}</a></td>`;
+                            } else {
+                                return `<td>${cell}</td>`;
+                            }
+                        }).join("") + "</tr>";
+                    }).join("");
 
-                // Inizializza lingua
-                setLanguage('fr');
-            }
+                    $("#lettres thead").html(thead);
+                    $("#lettres tbody").html(tbody);
+
+                    $("#lettres").DataTable({
+                        dom: 'Bfrtip',
+                        buttons: ['csvHtml5', 'excelHtml5']
+                    });
+
+                    // Inizializza lingua
+                    setLanguage('fr');
+                }
+            });
         });
-    });
     </script>
 
     <!-- Ce code s'inspire du modèle de Philippe Gambette : https://github.com/PhilippeGambette/visualisation-donnees-google-sheets -->
-
 </body>
 </html>
