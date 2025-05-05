@@ -13,16 +13,96 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.4.1/css/buttons.dataTables.min.css">
 </head>
 <body>
+     <div class="lang-selector">
+        <button onclick="setLanguage('fr')" aria-label="Français">🇫🇷</button>
+        <button onclick="setLanguage('it')" aria-label="Italiano">🇮🇹</button>
+        <button onclick="setLanguage('en')" aria-label="English">🇺🇸</button>
+    </div>
+    
     <h1>Lettres de Catherine de Médicis</h1>
+    
     <table id="lettres" class="display" style="width:100%">
         <thead></thead>
         <tbody></tbody>
     </table>
     
     <div class="btn-container">
-        <a href="texte1.html" class="btn">Explorer les textes des lettres</a>
-        <a href="https://beatricemundo.github.io/lettrescatherinemedicis/" class="btn">Accueil du projet</a>
+        <a href="texte1.html" class="btn" id="btn-textes">Explorer les textes des lettres</a>
+        <a href="https://beatricemundo.github.io/lettrescatherinemedicis/" class="btn" id="btn-home">Accueil du projet</a>
     </div>
+
+    <script>
+    const translations = {
+        fr: {
+            pageTitle: "Tableau des lettres",
+            h1: "Lettres de Catherine de Médicis",
+            btnTextes: "Explorer les textes des lettres",
+            btnHome: "Accueil du projet"
+        },
+        it: {
+            pageTitle: "Tabella delle lettere",
+            h1: "Lettere di Caterina de' Medici",
+            btnTextes: "Esplora i testi delle lettere",
+            btnHome: "Home del progetto"
+        },
+        en: {
+            pageTitle: "Letter table",
+            h1: "Letters of Catherine de' Medici",
+            btnTextes: "Explore the letter texts",
+            btnHome: "Project homepage"
+        }
+    };
+
+    const columnTranslations = {
+        fr: {
+            date: "Date",
+            lieu: "Lieu",
+            destinataire_s: "Destinataire(s)",
+            destinataire1: "Destinataire 1",
+            destinataire2: "Destinataire 2"
+        },
+        it: {
+            date: "Data",
+            lieu: "Luogo",
+            destinataire_s: "Destinatario(i)",
+            destinataire1: "Destinatario 1",
+            destinataire2: "Destinatario 2"
+        },
+        en: {
+            date: "Date",
+            lieu: "Place",
+            destinataire_s: "Recipient(s)",
+            destinataire1: "Recipient 1",
+            destinataire2: "Recipient 2"
+        }
+    };
+
+    let columnMap = {
+        date: -1,
+        lieu: -1,
+        destinataire_s: -1,
+        destinataire1: -1,
+        destinataire2: -1
+    };
+
+    function setLanguage(lang) {
+        document.getElementById("html-root").setAttribute("lang", lang);
+        document.getElementById("page-title").innerText = translations[lang].pageTitle;
+        document.getElementById("page-title-h1").innerText = translations[lang].h1;
+        document.getElementById("btn-textes").innerText = translations[lang].btnTextes;
+        document.getElementById("btn-home").innerText = translations[lang].btnHome;
+        updateTableHeaders(lang);
+    }
+
+    function updateTableHeaders(lang) {
+        $("#lettres thead th").each(function (index) {
+            for (const key in columnMap) {
+                if (columnMap[key] === index) {
+                    $(this).text(columnTranslations[lang][key]);
+                }
+            }
+        });
+    }
 
     <script>
     $(document).ready(function () {
@@ -33,6 +113,14 @@
                 const rows = data.split("\n").map(row => row.split(","));
                 const headers = rows[0];
                 const body = rows.slice(1);
+
+                // Mappa colonne
+                headers.forEach((h, index) => {
+                    const key = h.trim().toLowerCase().replace(/\s+/g, "_");
+                    if (columnMap.hasOwnProperty(key)) {
+                        columnMap[key] = index;
+                    }
+                });
 
                 let thead = "<tr>" + headers.map(h => "<th>" + h + "</th>").join("") + "</tr>";
                 let tbody = body.map(r => {
@@ -55,6 +143,9 @@
                     dom: 'Bfrtip',
                     buttons: ['csvHtml5', 'excelHtml5']
                 });
+
+                // Inizializza lingua
+                setLanguage('fr');
             }
         });
     });
