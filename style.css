@@ -1,0 +1,15 @@
+/* Rende la tabella leggibile su dispositivi mobili */
+#lettres_wrapper {
+    overflow-x: auto;
+    padding: 0 10px;
+}
+
+/* Forza la larghezza a occupare il 100% */
+table.dataTable {
+    width: 100% !important;
+}
+
+/* Imposta una larghezza minima alle colonne per evitare che si accavallino */
+table.dataTable td, table.dataTable th {
+    white-space: nowrap;
+}
