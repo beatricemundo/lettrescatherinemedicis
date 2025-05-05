@@ -1,12 +1,121 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <title>Lettres de Catherine de Médicis</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lettres de Catherine de Médicis</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      font-family: 'Georgia', serif;
+      line-height: 1.6;
+      max-width: 800px;
+      margin: auto;
+      padding: 2rem;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .lang-selector {
+      position: absolute;
+      top: 1em;
+      right: 1em;
+    }
+
+    .lang-selector button {
+      background: none;
+      border: 1px solid #999;
+      padding: 0.3em 0.6em;
+      margin-left: 0.3em;
+      cursor: pointer;
+    }
+
+    h1 {
+      font-size: 2em;
+      margin-bottom: 0.5rem;
+    }
+
+    .btn {
+      display: inline-block;
+      margin-top: 2rem;
+      padding: 0.6em 1.2em;
+      background-color: #444;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 4px;
+    }
+
+    .btn:hover {
+      background-color: #222;
+    }
+
+    footer {
+      border-top: 1px solid #ccc;
+      margin-top: 3rem;
+      padding-top: 1rem;
+      font-size: 0.9em;
+      color: #666;
+    }
+
+    em {
+      color: #555;
+    }
+  </style>
 </head>
 <body>
-    <h1>Bienvenue</h1>
-    <p>Ce site présente une sélection de lettres de Catherine de Médicis à partir d’une base de données mise à jour automatiquement.</p>
-    <a href="lettres.html">Consulter les lettres</a>
+
+  <div class="lang-selector">
+    <button onclick="setLanguage('fr')">🇫🇷</button>
+    <button onclick="setLanguage('it')">🇮🇹</button>
+    <button onclick="setLanguage('en')">🇺🇸</button>
+  </div>
+
+  <header>
+    <h1 id="title">Lettres de Catherine de Médicis</h1>
+    <p id="subtitle"><em>Un projet en cours de développement visant à construire une archive numérique dynamique</em></p>
+  </header>
+
+  <section id="introduction">
+    <p id="introText">
+      Ce site permet d’explorer un corpus en cours de constitution. Il s’inscrit dans un effort de recherche portant sur les lettres de Catherine de Médicis, à partir des volumes numérisés disponibles sur Gallica. Les données sont progressivement transcrites, annotées et enrichies, en lien avec des ressources comme Wikidata.
+    </p>
+
+    <p id="objectives">
+      L’objectif est d’analyser les pratiques d’écriture et les réseaux épistolaires féminins à la Renaissance, tout en fournissant un outil compatible avec des environnements d’analyse textuelle comme TXM ou des scripts Python. La base est appelée à évoluer, intégrant des métadonnées historiques, des liens externes et des textes en TEI.
+    </p>
+
+    <a id="accessBtn" class="btn" href="lettres.html">Accéder à la table des lettres</a>
+  </section>
+
+  <footer id="credits">
+    <h2>À propos</h2>
+    <p>
+      Je suis <a href="https://newmedialab.cuny.edu/person/beatrice-mundo/" target="_blank">Beatrice Mundo</a>, doctorante en études françaises au <a href="https://www.gc.cuny.edu/" target="_blank">CUNY Graduate Center</a>. Mes recherches portent sur les écrits de femmes à l’époque moderne, les réseaux épistolaires et les humanités numériques. Je m’intéresse particulièrement à l’accessibilité des textes historiques à travers la correction OCR, la structuration XML-TEI et l’analyse lexicométrique.
+    </p>
+    <p>
+      Ce projet est né à la suite de ma première exploration de la correspondance de Catherine de Médicis : <a href="https://beatricemundo.github.io/lettresmedicis6466/" target="_blank">lettresmedicis6466</a>, réalisée dans le cadre de mon master à l’Université Gustave Eiffel. Ce travail m’a donné envie de construire une plateforme plus accessible, plus souple et pensée pour accueillir un corpus évolutif.
+    </p>
+    <p>
+      Il est soutenu par un <a href="https://digitalgrants.commons.gc.cuny.edu/" target="_blank">Provost’s Digital Innovation Grant</a> (PDIG 2025), un programme récurrent des GC Digital Initiatives destiné à accompagner les doctorants dans la conception de projets numériques innovants qui participent aux missions de recherche, d’enseignement et de service du Graduate Center. Depuis 2012, ces subventions ont soutenu des projets variés allant de bases de données collaboratives à des analyses computationnelles ou des outils destinés à des communautés militantes.
+    </p>
+    <p>
+      Ce projet sera présenté lors du <strong>Digital Showcase</strong> organisé par la CUNY Digital Humanities Initiative, le mardi 13 mai 2025 de 18h à 19h30, au Segal Theatre et sur Zoom.
+    </p>
+    <p>
+      Pour en savoir plus sur ce projet, vous pouvez consulter la page qui lui est dédiée sur le site du <a href="https://newmedialab.cuny.edu/project/digital-accessibility-of-catherine-de-medicis-correspondence/" target="_blank">New Media Lab</a>.
+    </p>
+    <p>
+      Je remercie également chaleureusement le <a href="https://newmedialab.cuny.edu/" target="_blank">New Media Lab</a>, dont l’environnement collaboratif m’a permis de structurer ce travail, ainsi que <strong>Philippe Gambette</strong> (Université Gustave Eiffel) pour son aide technique précieuse dans l’organisation et la visualisation des données.
+    </p>
+    <p>
+      Le code source est disponible sous licence MIT sur <a href="https://github.com/beatricemundo/lettrescatherinemedicis" target="_blank">GitHub</a>.
+    </p>
+  </footer>
+
 </body>
 </html>
