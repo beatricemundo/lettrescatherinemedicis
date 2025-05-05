@@ -9,7 +9,10 @@ body {
   color: #333;
 }
 
-body.index {
+/* ============================================
+   LAYOUT — larghezza contenuta per default
+============================================ */
+body.narrow {
   max-width: 800px;
   margin: auto;
 }
