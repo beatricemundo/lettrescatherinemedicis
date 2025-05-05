@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Textes – Lettres de Catherine de Médicis</title>
+    <title id="page-title">Textes – Lettres de Catherine de Médicis</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
@@ -21,22 +21,54 @@
     <main role="main">
       <section>
         <p id="intro">
-          Cette section vous permet de consulter les textes des lettres éditées dans les onze volumes de la correspondance. Vous pouvez filtrer, chercher, et lire les lettres directement en ligne.
+          Cette section vous permet de consulter le texte des lettres qui composent la correspondance.
         </p>
 
-        <!-- Script interattivo o tabella verrà integrato qui -->
         <div id="textes-container">
-          <!-- Inserisci qui lo script o componente per i testi -->
+          <!-- Le contenu des lettres en français sera inséré ici -->
         </div>
 
         <a href="lettres.html" class="btn">← Retour à la table</a>
+        <a href="https://beatricemundo.github.io/lettrescatherinemedicis/" class="btn">🏠 Accueil du projet</a>
       </section>
     </main>
 
     <script>
+      const translations = {
+        fr: {
+          pageTitle: "Textes – Lettres de Catherine de Médicis",
+          title: "Textes des lettres",
+          subtitle: "Exploration textuelle des lettres éditées",
+          intro: "Cette section vous permet de consulter le texte des lettres qui composent la correspondance.",
+          back: "← Retour à la table",
+          home: "🏠 Accueil du projet"
+        },
+        it: {
+          pageTitle: "Testi – Lettere di Caterina de' Medici",
+          title: "Testi delle lettere",
+          subtitle: "Esplorazione testuale delle lettere edite",
+          intro: "Questa sezione consente di consultare il testo delle lettere che compongono la corrispondenza.",
+          back: "← Torna alla tabella",
+          home: "🏠 Home del progetto"
+        },
+        en: {
+          pageTitle: "Texts – Letters of Catherine de' Medici",
+          title: "Letter texts",
+          subtitle: "Textual exploration of the edited letters",
+          intro: "This section lets you read the text of the letters that make up the correspondence.",
+          back: "← Back to table",
+          home: "🏠 Project homepage"
+        }
+      };
+
       function setLanguage(lang) {
         document.getElementById("html-root").setAttribute("lang", lang);
-        // Inserisci qui eventuali traduzioni dinamiche
+        document.getElementById("title").innerText = translations[lang].title;
+        document.getElementById("subtitle").innerText = translations[lang].subtitle;
+        document.getElementById("intro").innerText = translations[lang].intro;
+        document.querySelector("a[href='lettres.html']").innerText = translations[lang].back;
+        document.querySelector("a[href='https://beatricemundo.github.io/lettrescatherinemedicis/']").innerText = translations[lang].home;
+        document.getElementById("page-title").innerText = translations[lang].pageTitle;
       }
 
       setLanguage('fr');
