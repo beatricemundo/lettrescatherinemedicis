@@ -1,135 +1,71 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Lettres de Catherine de Médicis</title>
-  <link rel="stylesheet" href="style.css" />
-  <style>
-    body {
-      font-family: 'Georgia', serif;
-      line-height: 1.6;
-      max-width: 800px;
-      margin: auto;
-      padding: 2rem;
-      background-color: #f9f9f9;
-      color: #333;
-    }
-
-    header {
-      text-align: center;
-      margin-bottom: 2rem;
-    }
-
-    .lang-selector {
-      position: absolute;
-      top: 1em;
-      right: 1em;
-    }
-
-    .lang-selector button {
-      background: none;
-      border: 1px solid #999;
-      padding: 0.3em 0.6em;
-      margin-left: 0.3em;
-      cursor: pointer;
-    }
-
-    h1 {
-      font-size: 2em;
-      margin-bottom: 0.5rem;
-    }
-
-    .btn {
-      display: inline-block;
-      margin-top: 2rem;
-      padding: 0.6em 1.2em;
-      background-color: #444;
-      color: #fff;
-      text-decoration: none;
-      border-radius: 4px;
-      margin-right: 1em;
-    }
-
-    .btn:hover {
-      background-color: #222;
-    }
-
-    footer {
-      border-top: 1px solid #ccc;
-      margin-top: 3rem;
-      padding-top: 1rem;
-      font-size: 0.9em;
-      color: #666;
-    }
-
-    em {
-      color: #555;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title">Lettres de Catherine de Médicis</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
+    <div class="lang-selector">
+        <button onclick="setLanguage('fr')">🇫🇷</button>
+        <button onclick="setLanguage('it')">🇮🇹</button>
+        <button onclick="setLanguage('en')">🇺🇸</button>
+    </div>
 
-  <div class="lang-selector">
-    <button onclick="setLanguage('fr')">🇫🇷</button>
-    <button onclick="setLanguage('it')">🇮🇹</button>
-    <button onclick="setLanguage('en')">🇺🇸</button>
-  </div>
-
-  <header>
     <h1 id="title">Lettres de Catherine de Médicis</h1>
     <p id="subtitle"><em>Une archive numérique vivante de la correspondance de la reine mère</em></p>
-  </header>
 
-  <section id="introduction">
-    <p id="introText">
-      Ce site permet d’explorer un corpus en cours de constitution. Il s’inscrit dans un effort de recherche portant sur les lettres de Catherine de Médicis, à partir des volumes numérisés disponibles sur Gallica. Les données sont progressivement transcrites, annotées et enrichies, en lien avec des ressources comme Wikidata.
-    </p>
+    <p id="intro">Ce site a pour but de rendre accessible l'ensemble des lettres publiées dans l'édition monumentale en onze volumes des <em>Lettres de Catherine de Médicis</em>, entreprise par la Section d'histoire et de philologie du Comité des travaux historiques et scientifiques, et éditée par Hector de la Ferrière, Baguenault de Puchesse et André Lesort.</p>
 
-    <p id="objectives">
-      L’objectif est d’analyser les pratiques d’écriture et les réseaux épistolaires féminins à la Renaissance, tout en fournissant un outil compatible avec des environnements d’analyse textuelle comme TXM ou des scripts Python. La base est appelée à évoluer, intégrant des métadonnées historiques, des liens externes et des textes en TEI.
-    </p>
+    <a href="lettres.html" class="button-link" id="access-table">Accéder à la table des lettres</a>
+    <a href="textes.html" class="button-link" id="access-texts">Explorer les textes des lettres</a>
 
-    <a id="accessBtn" class="btn" href="lettres.html">Accéder à la table des lettres</a>
-    <a class="btn" href="textes.html">Explorer les textes des lettres</a>
-  </section>
+    <footer>
+        <hr>
+        <h3 id="about-title">À propos</h3>
+        <p id="bio">Je suis doctorante en littérature française au <a href="https://www.gc.cuny.edu">CUNY Graduate Center</a>, où je travaille sur les écrits de femmes à la Renaissance, en particulier la correspondance de Catherine de Médicis. Mon projet allie recherche textuelle, structuration XML-TEI, et humanités numériques, avec un focus sur l’accessibilité des textes historiques.</p>
+        <p id="grant">Ce site s’inscrit dans le cadre du programme <a href="https://digitalgrants.commons.gc.cuny.edu/">Provost’s Digital Innovation Grants</a>, qui soutient les projets numériques menés par des doctorant·es du Graduate Center. Le projet sera présenté lors du <strong>Digital Showcase</strong> le 13 mai 2025 au Segal Theatre.</p>
+        <p id="project-link">Pour en savoir plus, consultez la page du projet sur le <a href="https://newmedialab.cuny.edu/project/digital-accessibility-of-catherine-de-medicis-correspondence/">New Media Lab</a>. Mon profil personnel est également disponible <a href="https://newmedialab.cuny.edu/person/beatrice-mundo/">ici</a>.</p>
+        <p id="acknowledgment">Ce projet est né après le développement de <a href="https://beatricemundo.github.io/lettresmedicis6466/">cette première base</a>, centrée sur le Grand Tour de France de 1564 à 1566. Je remercie chaleureusement <strong>Philippe Gambette</strong> (Université Gustave Eiffel) pour son aide technique et conceptuelle.</p>
+    </footer>
 
-  <footer id="credits">
-    <h2>À propos</h2>
-    <p>
-      Je suis <a href="https://newmedialab.cuny.edu/person/beatrice-mundo/" target="_blank">Beatrice Mundo</a>, doctorante en études françaises au <a href="https://www.gc.cuny.edu/" target="_blank">CUNY Graduate Center</a>. Mes recherches portent sur les écrits de femmes à l’époque moderne, les réseaux épistolaires et les humanités numériques. Je m’intéresse particulièrement à l’accessibilité des textes historiques à travers la correction OCR, la structuration XML-TEI et l’analyse lexicométrique.
-    </p>
-    <p>
-      Ce projet est né à la suite de ma première exploration de la correspondance de Catherine de Médicis : <a href="https://beatricemundo.github.io/lettresmedicis6466/" target="_blank">lettresmedicis6466</a>, réalisée dans le cadre de mon master à l’Université Gustave Eiffel. Ce travail m’a donné envie de construire une plateforme plus accessible, plus souple et pensée pour accueillir un corpus évolutif.
-    </p>
-    <p>
-      Il est soutenu par un <a href="https://digitalgrants.commons.gc.cuny.edu/" target="_blank">Provost’s Digital Innovation Grant</a> (PDIG 2025), un programme récurrent des GC Digital Initiatives destiné à accompagner les doctorants dans la conception de projets numériques innovants qui participent aux missions de recherche, d’enseignement et de service du Graduate Center. Depuis 2012, ces subventions ont soutenu des projets variés allant de bases de données collaboratives à des analyses computationnelles ou des outils destinés à des communautés militantes.
-    </p>
-    <p>
-      Ce projet sera présenté lors du <strong>Digital Showcase</strong> organisé par la CUNY Digital Humanities Initiative, le mardi 13 mai 2025 de 18h à 19h30, au Segal Theatre et sur Zoom.
-    </p>
-    <p>
-      Pour en savoir plus sur ce projet, vous pouvez consulter la page qui lui est dédiée sur le site du <a href="https://newmedialab.cuny.edu/project/digital-accessibility-of-catherine-de-medicis-correspondence/" target="_blank">New Media Lab</a>.
-    </p>
-    <p>
-      Je remercie également chaleureusement le <a href="https://newmedialab.cuny.edu/" target="_blank">New Media Lab</a>, dont l’environnement collaboratif m’a permis de structurer ce travail, ainsi que <strong>Philippe Gambette</strong> (Université Gustave Eiffel) pour son aide technique précieuse dans l’organisation et la visualisation des données.
-    </p>
-    <p>
-      Le code source est disponible sous licence MIT sur <a href="https://github.com/beatricemundo/lettrescatherinemedicis" target="_blank">GitHub</a>.
-    </p>
-  </footer>
+    <script>
+      const translations = {
+        fr: {
+          title: "Lettres de Catherine de Médicis",
+          subtitle: "Une archive numérique vivante de la correspondance de la reine mère",
+          intro: "Ce site a pour but de rendre accessible l'ensemble des lettres publiées dans l'édition monumentale en onze volumes des Lettres de Catherine de Médicis, entreprise par la Section d'histoire et de philologie du Comité des travaux historiques et scientifiques, et éditée par Hector de la Ferrière, Baguenault de Puchesse et André Lesort.",
+          accessTable: "Accéder à la table des lettres",
+          accessTexts: "Explorer les textes des lettres",
+          aboutTitle: "À propos"
+        },
+        it: {
+          title: "Lettere di Caterina de' Medici",
+          subtitle: "Un archivio digitale vivo della corrispondenza della Regina Madre",
+          intro: "Questo sito si propone di rendere accessibili tutte le lettere pubblicate nell’edizione monumentale in undici volumi delle Lettere di Caterina de’ Medici, curata dalla Sezione di storia e filologia del Comitato delle opere storiche e scientifiche e pubblicata da Hector de la Ferrière, Baguenault de Puchesse e André Lesort.",
+          accessTable: "Accedi alla tabella delle lettere",
+          accessTexts: "Esplora i testi delle lettere",
+          aboutTitle: "Informazioni"
+        },
+        en: {
+          title: "Letters of Catherine de' Medici",
+          subtitle: "A living digital archive of the Queen Mother’s correspondence",
+          intro: "This website aims to make accessible the entire corpus of letters published in the monumental eleven-volume edition of Catherine de’ Medici’s Letters, compiled by the Historical and Philological Section of the French Committee for Historical and Scientific Works, and edited by Hector de la Ferrière, Baguenault de Puchesse, and André Lesort.",
+          accessTable: "Access the table of letters",
+          accessTexts: "Explore the letter texts",
+          aboutTitle: "About"
+        }
+      };
 
-  <script>
-    const translations = {
-      fr: "Une archive numérique vivante de la correspondance de la reine mère",
-      it: "Un archivio digitale vivo della corrispondenza della Regina Madre",
-      en: "A living digital archive of the Queen Mother’s correspondence"
-    };
-
-    function setLanguage(lang) {
-      document.getElementById("subtitle").innerHTML = `<em>${translations[lang]}</em>`;
-    }
-  </script>
-
+      function setLanguage(lang) {
+        document.getElementById("title").innerText = translations[lang].title;
+        document.getElementById("subtitle").innerHTML = `<em>${translations[lang].subtitle}</em>`;
+        document.getElementById("intro").innerText = translations[lang].intro;
+        document.getElementById("access-table").innerText = translations[lang].accessTable;
+        document.getElementById("access-texts").innerText = translations[lang].accessTexts;
+        document.getElementById("about-title").innerText = translations[lang].aboutTitle;
+      }
+    </script>
 </body>
 </html>
