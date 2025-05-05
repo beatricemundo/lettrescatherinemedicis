@@ -54,36 +54,66 @@
         };
 
         const columnTranslations = {
-            fr: {
-                date: "Date",
-                lieu: "Lieu",
-                destinataire_s: "Destinataire(s)",
-                destinataire1: "Destinataire 1",
-                destinataire2: "Destinataire 2"
-            },
-            it: {
-                date: "Data",
-                lieu: "Luogo",
-                destinataire_s: "Destinatario(i)",
-                destinataire1: "Destinatario 1",
-                destinataire2: "Destinatario 2"
-            },
-            en: {
-                date: "Date",
-                lieu: "Place",
-                destinataire_s: "Recipient(s)",
-                destinataire1: "Recipient 1",
-                destinataire2: "Recipient 2"
-            }
-        };
+    fr: {
+        tome: "Tome",
+        page: "Page",
+        année: "Année",
+        date: "Date",
+        lieu: "Lieu",
+        wikidata_lieu: "Wikidata lieu",
+        destinataire_s: "Destinataire(s)",
+        destinataire1: "Destinataire 1",
+        id_wikidata_destinataire1: "ID Wikidata destinataire 1",
+        destinataire2: "Destinataire 2",
+        id_wikidata_destinataire2: "ID Wikidata destinataire 2",
+        url_page: "URL page"
+    },
+    it: {
+        tome: "Tomo",
+        page: "Pagina",
+        année: "Anno",
+        date: "Data",
+        lieu: "Luogo",
+        wikidata_lieu: "Wikidata luogo",
+        destinataire_s: "Destinatario(i)",
+        destinataire1: "Destinatario 1",
+        id_wikidata_destinataire1: "ID Wikidata destinatario 1",
+        destinataire2: "Destinatario 2",
+        id_wikidata_destinataire2: "ID Wikidata destinatario 2",
+        url_page: "Pagina URL"
+    },
+    en: {
+        tome: "Volume",
+        page: "Page",
+        année: "Year",
+        date: "Date",
+        lieu: "Place",
+        wikidata_lieu: "Wikidata place",
+        destinataire_s: "Recipient(s)",
+        destinataire1: "Recipient 1",
+        id_wikidata_destinataire1: "Wikidata ID recipient 1",
+        destinataire2: "Recipient 2",
+        id_wikidata_destinataire2: "Wikidata ID recipient 2",
+        url_page: "Page URL"
+    }
+};
+
 
         let columnMap = {
-            date: -1,
-            lieu: -1,
-            destinataire_s: -1,
-            destinataire1: -1,
-            destinataire2: -1
-        };
+    tome: -1,
+    page: -1,
+    année: -1,
+    date: -1,
+    lieu: -1,
+    wikidata_lieu: -1,
+    destinataire_s: -1,
+    destinataire1: -1,
+    id_wikidata_destinataire1: -1,
+    destinataire2: -1,
+    id_wikidata_destinataire2: -1,
+    url_page: -1
+};
+
         function setLanguage(lang) {
             document.getElementById("html-root").setAttribute("lang", lang);
             document.getElementById("page-title").innerText = translations[lang].pageTitle;
@@ -94,9 +124,9 @@
         }
 
         function updateTableHeaders(lang) {
-            $("#lettres thead th").each(function (index) {
-                for (const key in columnMap) {
-                    if (columnMap[key] === index) {
+            $("#lettres thead th").each(function () {
+                const key = $(this).data(function () {
+                    if (columnTranslation[lang][key] {
                         $(this).text(columnTranslations[lang][key]);
                     }
                 }
@@ -112,15 +142,20 @@
                     const headers = rows[0];
                     const body = rows.slice(1);
 
-                    // Mappa colonne
-                    headers.forEach((h, index) => {
-                        const key = h.trim().toLowerCase().replace(/\s+/g, "_");
-                        if (columnMap.hasOwnProperty(key)) {
-                            columnMap[key] = index;
-                        }
-                    });
+                    // Mappa colonne e normalizza le intestazioni
+                   headers.forEach((h, index) => {
+    const key = h.trim().toLowerCase().replace(/[\s()]+/g, "_").replace(/'/g, "");
+    if (columnMap.hasOwnProperty(key)) {
+        columnMap[key] = index;
+    }
+});
 
-                    let thead = "<tr>" + headers.map(h => "<th>" + h + "</th>").join("") + "</tr>";
+
+                    let thead = "<tr>" + headers.map((h) => {
+                        const key = h.trim().toLowerCase().replace(/[\s()]+/g, "_").replace(/'/g, "");
+                        return "<th data-key='" + key + "'>" + h + "</th>";
+                    }).join("") + "</tr>";
+
                     let tbody = body.map(r => {
                         return "<tr>" + r.map((c, i) => {
                             const header = headers[i] ? headers[i].trim().toLowerCase() : "";
