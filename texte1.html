@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="fr" id="html-root">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Textes – Lettres de Catherine de Médicis</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="lang-selector">
+      <button onclick="setLanguage('fr')" aria-label="Français">🇫🇷</button>
+      <button onclick="setLanguage('it')" aria-label="Italiano">🇮🇹</button>
+      <button onclick="setLanguage('en')" aria-label="English">🇺🇸</button>
+    </div>
+
+    <header role="banner">
+      <h1 id="title">Textes des lettres</h1>
+      <p id="subtitle"><em>Exploration textuelle des lettres éditées</em></p>
+    </header>
+
+    <main role="main">
+      <section>
+        <p id="intro">
+          Cette section vous permet de consulter les textes des lettres éditées dans les onze volumes de la correspondance. Vous pouvez filtrer, chercher, et lire les lettres directement en ligne.
+        </p>
+
+        <!-- Script interattivo o tabella verrà integrato qui -->
+        <div id="textes-container">
+          <!-- Inserisci qui lo script o componente per i testi -->
+        </div>
+
+        <a href="lettres.html" class="btn">← Retour à la table</a>
+      </section>
+    </main>
+
+    <script>
+      function setLanguage(lang) {
+        document.getElementById("html-root").setAttribute("lang", lang);
+        // Inserisci qui eventuali traduzioni dinamiche
+      }
+
+      setLanguage('fr');
+    </script>
+  </body>
+</html>
