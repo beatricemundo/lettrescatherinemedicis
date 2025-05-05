@@ -125,13 +125,13 @@
 
         function updateTableHeaders(lang) {
             $("#lettres thead th").each(function () {
-                const key = $(this).data(function () {
-                    if (columnTranslation[lang][key] {
-                        $(this).text(columnTranslations[lang][key]);
-                    }
+                const key = $(this).data("key");
+                if (columnTranslations[lang][key]) {
+                    $(this).text(columnTranslations[lang][key]);
                 }
             });
         }
+
 
         $(document).ready(function () {
             $.ajax({
