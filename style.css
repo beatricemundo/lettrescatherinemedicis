@@ -4,11 +4,14 @@
 body {
   font-family: 'Georgia', serif;
   line-height: 1.6;
-  margin: auto;
   padding: 2rem;
-  max-width: 800px;
   background-color: #f8f8f8;
   color: #333;
+}
+
+body.index {
+  max-width: 800px;
+  margin: auto;
 }
 
 a {
@@ -96,7 +99,6 @@ table.dataTable th {
 /* ============================================
    TEXTES (textes.html) — da personalizzare
 ============================================ */
-/* Es. base: */
 .textes-section {
   margin-bottom: 2rem;
 }
@@ -104,22 +106,4 @@ table.dataTable th {
 .textes-title {
   font-size: 1.5em;
   margin-top: 1.5rem;
-}
-
-/* Aggiungi qui i tuoi stili specifici per textes.html */
-
-/* Rende la tabella leggibile su dispositivi */
-#lettres_wrapper {
-    overflow-x: auto;
-    padding: 0 10px;
-}
-
-/* Forza la larghezza a occupare il 100% */
-table.dataTable {
-    width: 100% !important;
-}
-
-/* Imposta una larghezza minima alle colonne per evitare che si accavallino */
-table.dataTable td, table.dataTable th {
-    white-space: nowrap;
 }
