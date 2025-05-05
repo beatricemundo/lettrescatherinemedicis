@@ -151,10 +151,27 @@
 });
 
 
+                    const headerKeyMap = {
+                        "Tome": "tome",
+                        "Page": "page",
+                        "Année": "année",
+                        "Date": "date",
+                        "Lieu": "lieu",
+                        "Wikidata lieu": "wikidata_lieu",
+                        "Destinataire(s)": "destinataire_s",
+                        "Destinataire 1": "destinataire1",
+                        "ID Wikidata destinataire 1": "id_wikidata_destinataire1",
+                        "Destinataire 2": "destinataire2",
+                        "ID Wikidata destinataire 2": "id_wikidata_destinataire2",
+                        "URL page": "url_page"
+                    };
+                    
                     let thead = "<tr>" + headers.map((h) => {
-                        const key = h.trim().toLowerCase().replace(/[\s()]+/g, "_").replace(/'/g, "");
-                        return "<th data-key='" + key + "'>" + h + "</th>";
+                        const clean = h.trim();
+                        const key = headerKeyMap[clean] || clean.toLowerCase().replace(/[\s()]+/g, "_").replace(/'/g, "");
+                         return "<th data-key='" + key + "'>" + clean + "</th>";
                     }).join("") + "</tr>";
+
 
                     let tbody = body.map(r => {
                         return "<tr>" + r.map((c, i) => {
