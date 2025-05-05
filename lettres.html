@@ -30,15 +30,16 @@
                 let thead = "<tr>" + headers.map(h => "<th>" + h + "</th>").join("") + "</tr>";
                 let tbody = body.map(r => {
                     return "<tr>" + r.map((c, i) => {
-                        const header = headers[i].trim().toLowerCase();
-                        if (header === "url page" && c.trim().startsWith("http")) {
-                            return `<td><a href="${c.trim()}" target="_blank">${c.trim()}</a></td>`;
+                        const header = headers[i] ? headers[i].trim().toLowerCase() : "";
+                        const cell = c.trim();
+
+                        if (header === "url page" && cell.startsWith("http")) {
+                            return `<td><a href="${cell}" target="_blank">${cell}</a></td>`;
                         } else {
-                            return "<td>" + c + "</td>";
+                            return `<td>${cell}</td>`;
                         }
                     }).join("") + "</tr>";
                 }).join("");
-
 
                 $("#lettres thead").html(thead);
                 $("#lettres tbody").html(tbody);
