@@ -1,3 +1,113 @@
+/* ============================================
+   BASE STYLES — comuni a tutte le pagine
+============================================ */
+body {
+  font-family: 'Georgia', serif;
+  line-height: 1.6;
+  margin: auto;
+  padding: 2rem;
+  max-width: 800px;
+  background-color: #f8f8f8;
+  color: #333;
+}
+
+a {
+  color: #444;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* ============================================
+   COMPONENTI RIUTILIZZABILI
+============================================ */
+.btn {
+  display: inline-block;
+  margin-top: 2rem;
+  padding: 0.6em 1.2em;
+  background-color: #444;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 4px;
+}
+
+.btn:hover {
+  background-color: #222;
+}
+
+footer {
+  border-top: 1px solid #ccc;
+  margin-top: 3rem;
+  padding-top: 1rem;
+  font-size: 0.9em;
+  color: #666;
+}
+
+/* ============================================
+   HOMEPAGE (index.html)
+============================================ */
+.lang-selector {
+  position: absolute;
+  top: 1em;
+  right: 1em;
+}
+
+.lang-selector button {
+  background: none;
+  border: 1px solid #999;
+  padding: 0.3em 0.6em;
+  margin-left: 0.3em;
+  cursor: pointer;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+h1 {
+  font-size: 2em;
+  margin-bottom: 0.5rem;
+}
+
+em {
+  color: #555;
+}
+
+/* ============================================
+   LETTRES (lettres.html) — DataTable responsive
+============================================ */
+#lettres_wrapper {
+  overflow-x: auto;
+  padding: 0 10px;
+}
+
+table.dataTable {
+  width: 100% !important;
+}
+
+table.dataTable td,
+table.dataTable th {
+  white-space: nowrap;
+}
+
+/* ============================================
+   TEXTES (textes.html) — da personalizzare
+============================================ */
+/* Es. base: */
+.textes-section {
+  margin-bottom: 2rem;
+}
+
+.textes-title {
+  font-size: 1.5em;
+  margin-top: 1.5rem;
+}
+
+/* Aggiungi qui i tuoi stili specifici per textes.html */
+
 /* Rende la tabella leggibile su dispositivi */
 #lettres_wrapper {
     overflow-x: auto;
