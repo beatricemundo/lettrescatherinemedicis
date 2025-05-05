@@ -28,7 +28,17 @@
                 const body = rows.slice(1);
 
                 let thead = "<tr>" + headers.map(h => "<th>" + h + "</th>").join("") + "</tr>";
-                let tbody = body.map(r => "<tr>" + r.map(c => "<td>" + c + "</td>").join("") + "</tr>").join("");
+                let tbody = body.map(r => {
+                    return "<tr>" + r.map((c, i) => {
+                        const header = headers[i].trim().toLowerCase();
+                        if (header === "url page" && c.trim().startsWith("http")) {
+                            return `<td><a href="${c.trim()}" target="_blank">${c.trim()}</a></td>`;
+                        } else {
+                            return "<td>" + c + "</td>";
+                        }
+                    }).join("") + "</tr>";
+                }).join("");
+
 
                 $("#lettres thead").html(thead);
                 $("#lettres tbody").html(tbody);
