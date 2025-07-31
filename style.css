@@ -172,6 +172,67 @@ table.dataTable th {
 }
 
 /* ============================================
+   NAVIGATION MENU RESPONSIVE
+============================================ */
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #eee;
+  padding: 10px 15px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.nav-menu {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.nav-menu a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+}
+
+.hamburger {
+  display: none;
+  font-size: 1.5em;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+  .nav-menu {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 50px;
+    left: 10px;
+    background: #fff;
+    border: 1px solid #ccc;
+    padding: 10px;
+    z-index: 1001;
+  }
+
+  .nav-menu.show {
+    display: flex;
+  }
+
+  .hamburger {
+    display: block;
+  }
+
+  .lang-selector {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
+}
+
+/* ============================================
    TEXTES (textes.html) — da personalizzare
 ============================================ */
 .textes-section {
