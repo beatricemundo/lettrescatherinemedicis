@@ -23,7 +23,6 @@
       <h1 id="title"></h1>
       <p id="subtitle"><em></em></p>
     </header>
-    <p id="subtitle"><em></em></p>
     <figure class="portrait">
       <img src="images/Catherine_Clouet.jpg" alt="Portrait de Catherine de Médicis en deuil">
       <figcaption>
@@ -40,10 +39,13 @@
     </main>
     <footer role="contentinfo">
       <h2 id="about-title"></h2>
-    <figure class="bioportrait-wrapper">
-      <img src="images/BeatriceMundo.jpg" alt="Beatrice Mundo" class="bioportrait-inline" />
-      <figcaption>Beatrice Mundo</figcaption>
+    <div class="bio-container">
+      <figure class="bioportrait-wrapper">
+        <img src="images/BeatriceMundo.jpg" alt="Beatrice Mundo" class="bioportrait-inline" />
+      <figcaption>Beatrice Mundo, project curator</figcaption>
     </figure>
+      <p id="bio"></p>
+    </div>  
       <p id="project-link"></p>
       <p id="grant"></p>
       <p id="project-info"></p>
@@ -51,6 +53,7 @@
       <p id="source-code"></p>
     </footer>
     <script>
+      document.addEventListener("DOMContentLoaded", function () {
       const translations = {
                 en: {
           title: "Letters of Catherine de' Medici",
