@@ -106,13 +106,21 @@ em {
 /* ============================================
    IMG HOMEPAGE (index.html)
 ============================================ */
+.portrait-container {
+  text-align: center;
+  margin: 1.5em 0;
+}
+
 .portrait-catherine {
-  display: block;
-  margin: 0.5em auto;
-  max-width: 150px;
+  max-width: 140px;
   height: auto;
-  border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+}
+
+.portrait-container figcaption {
+  font-size: 0.85em;
+  color: #444;
+  margin-top: 0.5em;
 }
 
 /* ============================================
