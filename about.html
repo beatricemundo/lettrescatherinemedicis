@@ -5,57 +5,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>About — Lettres de Catherine de Médicis</title>
   <link rel="stylesheet" href="style.css" />
-  <style>
-    /* Esempio rapido per il menu a destra */
-    .side-nav {
-      position: fixed;
-      right: 20px;
-      top: 20px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-    .side-nav a {
-      background: #333;
-      color: white;
-      padding: 8px 12px;
-      text-decoration: none;
-      border-radius: 5px;
-      font-size: 0.9rem;
-    }
-    .side-nav a:hover {
-      background: #555;
-    }
-    main {
-      max-width: 800px;
-      margin: 100px auto;
-      padding: 0 20px;
-    }
-  </style>
 </head>
 <body>
 
-<header class="topbar">
-<div class="top-bar">
-  <div class="hamburger" onclick="toggleMenu()">☰</div>
+  <header class="top-bar">
+    <div class="hamburger" onclick="toggleMenu()">☰</div>
+    <div class="lang-selector">
+      <button onclick="setLanguage('en')" aria-label="English">🇺🇸</button>
+      <button onclick="setLanguage('fr')" aria-label="Français">🇫🇷</button>
+      <button onclick="setLanguage('it')" aria-label="Italiano">🇮🇹</button>
+    </div>
+  </header>
 
-  <div class="lang-selector">
-    <button onclick="setLanguage('en')" aria-label="English">🇺🇸</button>
-    <button onclick="setLanguage('fr')" aria-label="Français">🇫🇷</button>
-    <button onclick="setLanguage('it')" aria-label="Italiano">🇮🇹</button>
-  </div>
-</div>
-
-<nav class="side-nav" id="sideNav">
-  <a href="index.html">🏠 Home</a>
-  <a href="lettres.html">📜 Table</a>
-  <a href="texte1.html">📄 Texts</a>
-  <a href="about.html">ℹ️ About</a>
-  <a href="biography.html">👤 Biography</a>
-  <a href="bibliography.html">📚 Bibliography</a>
-</nav>
-
-</header>
+  <nav class="side-nav" id="sideNav">
+    <a href="index.html">🏠 Home</a>
+    <a href="lettres.html">📜 Table</a>
+    <a href="texte1.html">📄 Texts</a>
+    <a href="about.html">ℹ️ About</a>
+    <a href="biography.html">👤 Biography</a>
+    <a href="bibliography.html">📚 Bibliography</a>
+  </nav>
 
   <main>
     <h1 id="about-title"></h1>
@@ -102,11 +71,11 @@
       setLanguage(langToUse);
     });
 
-  function toggleMenu() {
-    const nav = document.getElementById("sideNav");
-    nav.classList.toggle("open");
-  }
-</script>
+    function toggleMenu() {
+      const nav = document.getElementById("sideNav");
+      nav.classList.toggle("open");
+    }
+  </script>
 
 </body>
 </html>
