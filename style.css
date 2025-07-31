@@ -107,27 +107,27 @@ em {
    IMG HOMEPAGE (index.html)
 ============================================ */
 .portrait {
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   margin: 2rem auto;
 }
 
 .portrait img {
-  max-width: 300px;
   width: 100%;
+  max-width: 320px; /* leggermente più grande */
   height: auto;
-  display: block;
-  margin: 0 auto;
   border-radius: 4px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
 }
 
 .portrait figcaption {
-  font-size: 0.85em;
-  color: #666;
-  margin-top: 0.5rem;
+  text-align: center;
+  font-size: 0.75em; /* più piccola */
+  color: #555;
+  margin-top: 0.4rem;
   max-width: 320px;
-  margin-left: auto;
-  margin-right: auto;
-  line-height: 1.4;
+  line-height: 1.3;
 }
 
 /* ============================================
