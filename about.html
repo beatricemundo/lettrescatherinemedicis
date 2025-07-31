@@ -35,21 +35,22 @@
 </head>
 <body>
 
+<header class="topbar">
+  <div class="hamburger" onclick="toggleMenu()">☰</div>
+  <nav class="nav-menu" id="navMenu">
+    <a href="index.html">🏠 Home</a>
+    <a href="lettres.html">📜 Table</a>
+    <a href="texte1.html">📄 Texts</a>
+    <a href="about.html">ℹ️ About</a>
+    <a href="biography.html">👤 Biography</a>
+    <a href="bibliography.html">📚 Bibliography</a>
+  </nav>
   <div class="lang-selector">
     <button onclick="setLanguage('en')" aria-label="English">🇺🇸</button>
     <button onclick="setLanguage('fr')" aria-label="Français">🇫🇷</button>
     <button onclick="setLanguage('it')" aria-label="Italiano">🇮🇹</button>
   </div>
-
-<div class="side-nav">
-  <a href="index.html">🏠 Home</a>
-  <a href="lettres.html">📜 Table</a>
-  <a href="texte1.html">📄 Texts</a>
-  <a href="about.html">ℹ️ About</a>
-  <a href="biography.html">👤 Biography</a>
-  <a href="bibliography.html">📚 Bibliography</a>
-</div>
-
+</header>
 
   <main>
     <h1 id="about-title"></h1>
