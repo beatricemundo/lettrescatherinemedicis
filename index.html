@@ -6,12 +6,12 @@
     <title>Lettres de Catherine de Médicis</title>
     <link rel="stylesheet" href="style.css" />
     <script>
-  if (!window.location.pathname.includes("lettres.html")) {
-    document.addEventListener("DOMContentLoaded", function () {
-      document.body.classList.add("index");
-    });
-  }
-</script>
+      if (!window.location.pathname.includes("lettres.html")) {
+        document.addEventListener("DOMContentLoaded", function () {
+          document.body.classList.add("index");
+        });
+      }
+    </script>
   </head>
   <body>
     <div class="lang-selector">
@@ -19,17 +19,20 @@
       <button onclick="setLanguage('fr')" aria-label="Français">🇫🇷</button>
       <button onclick="setLanguage('it')" aria-label="Italiano">🇮🇹</button>
     </div>
+
     <header role="banner">
       <h1 id="title"></h1>
       <p id="subtitle"><em></em></p>
     </header>
+
     <figure class="portrait">
       <img src="images/Catherine_Clouet.jpg" alt="Portrait de Catherine de Médicis en deuil">
       <figcaption>
-        Portrait de Catherine de Médicis en tenue de deuil, vers 1565, atelier de François Clouet, Paris, musée Carnavalet. Source :
-        <a href="https://commons.wikimedia.org/wiki/File:Catherine_de_M%C3%A9dicis_-_entourage_de_Fran%C3%A7ois_Clouet.jpg" target="_blank">Wikimedia Commons</a>.
+        Portrait de Catherine de Médicis en tenue de deuil, vers 1565, atelier de François Clouet, Paris, musée Carnavalet.
+        Source : <a href="https://commons.wikimedia.org/wiki/File:Catherine_de_M%C3%A9dicis_-_entourage_de_Fran%C3%A7ois_Clouet.jpg" target="_blank">Wikimedia Commons</a>.
       </figcaption>
     </figure>
+
     <main role="main">
       <section>
         <p id="intro"></p>
@@ -37,25 +40,26 @@
         <a id="access-texts" class="btn" href="texte1.html"></a>
       </section>
     </main>
+
     <footer role="contentinfo">
       <h2 id="about-title"></h2>
-    <div class="bio-container">
-      <figure class="bioportrait-wrapper">
-        <img src="images/BeatriceMundo.jpg" alt="Beatrice Mundo" class="bioportrait-inline" />
-      <figcaption>Beatrice Mundo, project curator</figcaption>
-    </figure>
-      <p id="bio"></p>
-    </div>  
+      <div class="bio-container">
+        <figure class="bioportrait-wrapper">
+          <img src="images/BeatriceMundo.jpg" alt="Beatrice Mundo" class="bioportrait-inline" />
+          <figcaption>Beatrice Mundo, curator of the project</figcaption>
+        </figure>
+        <p id="bio"></p>
+      </div>  
       <p id="project-link"></p>
       <p id="grant"></p>
       <p id="project-info"></p>
       <p id="acknowledgment"></p>
       <p id="source-code"></p>
     </footer>
+
     <script>
       document.addEventListener("DOMContentLoaded", function () {
-      const translations = {
-                en: {
+        en: {
           title: "Letters of Catherine de' Medici",
           subtitle: "A living digital archive of the Queen Mother’s correspondence",
           intro: "Welcome! This digital archive is currently under construction. The aim is to make all eleven volumes of Catherine de’ Medici’s correspondence freely accessible, as edited by the Section d'histoire et de philologie of the Comité des travaux historiques et scientifiques and curated by Hector de la Ferrière, Baguenault de Puchesse, and André Lesort. \n For now, only the first volume (Tome I) has been uploaded. A more detailed presentation will soon be available on the “About the project” page.",
@@ -98,58 +102,56 @@
           "source-code": "Il codice sorgente è disponibile con licenza MIT su <a href='https://github.com/beatricemundo/lettrescatherinemedicis' target='_blank'>GitHub</a>."
         }
       };
-      function setLanguage(lang) {
-        const t = translations[lang];
-        document.getElementById("title").innerText = t.title;
-        document.getElementById("subtitle").innerHTML = `<em>${t.subtitle}</em>`;
-        document.getElementById("intro").innerHTML = t.intro.replace(/\n/g, "<br><br>");
-        document.getElementById("access-table").innerText = t.accessTable;
-        document.getElementById("access-texts").innerText = t.accessTexts;
-        document.getElementById("about-title").innerText = t.aboutTitle;
-        document.getElementById("bio").innerHTML = t.bio;
-        document.getElementById("project-link").innerHTML = t["project-link"];
-        document.getElementById("grant").innerHTML = t.grant;
-        document.getElementById("project-info").innerHTML = t["project-info"];
-        document.getElementById("acknowledgment").innerHTML = t.acknowledgment;
-        document.getElementById("source-code").innerHTML = t["source-code"];
-        document.getElementById("html-root").setAttribute("lang", lang);
-      }
 
-      // Langue par défaut
-      const supportedLanguages = ['en', 'fr', 'it'];
-      const savedLang = localStorage.getItem('lang');
-      
-      let langToUse;
-      
-      if (savedLang && supportedLanguages.includes(savedLang)) {
-        langToUse = savedLang;
-      } else {
-        const browserLang = navigator.language.slice(0, 2);
-        langToUse = supportedLanguages.includes(browserLang) ? browserLang : 'en';
-      }
-      
-      const langMessages = {
-        en: "Language detected: English 🇺🇸",
-        fr: "Langue détectée : Français 🇫🇷",
-        it: "Lingua rilevata: Italiano 🇮🇹"
-      };
-      
-      const detectionBanner = document.createElement("div");
-      detectionBanner.id = "lang-detected";
-      detectionBanner.innerText = langMessages[langToUse];
-      document.body.appendChild(detectionBanner);
-      
-      // Fade-out dopo 1.5 secondi
-      setTimeout(() => {
-        detectionBanner.classList.add("fade-out");
-      }, 1500);
-      
-      // Rimuovi dopo 2 secondi (opzionale se vuoi animazione completa)
-      setTimeout(() => {
-        detectionBanner.remove();
-      }, 2000);
-      
-      setLanguage(langToUse);
+        function setLanguage(lang) {
+          const t = translations[lang];
+          document.getElementById("title").innerText = t.title;
+          document.getElementById("subtitle").innerHTML = `<em>${t.subtitle}</em>`;
+          document.getElementById("intro").innerHTML = t.intro.replace(/\n/g, "<br><br>");
+          document.getElementById("access-table").innerText = t.accessTable;
+          document.getElementById("access-texts").innerText = t.accessTexts;
+          document.getElementById("about-title").innerText = t.aboutTitle;
+          document.getElementById("bio").innerHTML = t.bio;
+          document.getElementById("project-link").innerHTML = t["project-link"];
+          document.getElementById("grant").innerHTML = t.grant;
+          document.getElementById("project-info").innerHTML = t["project-info"];
+          document.getElementById("acknowledgment").innerHTML = t.acknowledgment;
+          document.getElementById("source-code").innerHTML = t["source-code"];
+          document.getElementById("html-root").setAttribute("lang", lang);
+        }
+
+        const supportedLanguages = ['en', 'fr', 'it'];
+        const savedLang = localStorage.getItem('lang');
+        let langToUse;
+
+        if (savedLang && supportedLanguages.includes(savedLang)) {
+          langToUse = savedLang;
+        } else {
+          const browserLang = navigator.language.slice(0, 2);
+          langToUse = supportedLanguages.includes(browserLang) ? browserLang : 'en';
+        }
+
+        const langMessages = {
+          en: "Language detected: English 🇺🇸",
+          fr: "Langue détectée : Français 🇫🇷",
+          it: "Lingua rilevata: Italiano 🇮🇹"
+        };
+
+        const detectionBanner = document.createElement("div");
+        detectionBanner.id = "lang-detected";
+        detectionBanner.innerText = langMessages[langToUse];
+        document.body.appendChild(detectionBanner);
+
+        setTimeout(() => {
+          detectionBanner.classList.add("fade-out");
+        }, 1500);
+
+        setTimeout(() => {
+          detectionBanner.remove();
+        }, 2000);
+
+        setLanguage(langToUse);
+      });
     </script>
   </body>
 </html>
