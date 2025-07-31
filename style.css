@@ -106,22 +106,27 @@ em {
 /* ============================================
    IMG HOMEPAGE (index.html)
 ============================================ */
-.portrait-container {
+.portrait {
   text-align: center;
-  margin: 1.5em 0;
+  margin: 2rem auto;
 }
 
-.portrait-catherine {
-  max-width: 140px;
+.portrait img {
+  max-width: 60%;
   height: auto;
-  border-radius: 4px;
+  display: block;
+  margin: 0 auto;
 }
 
-.portrait-container figcaption {
-  font-size: 0.85em;
-  color: #444;
-  margin-top: 0.5em;
+.portrait figcaption {
+  font-size: 0.9em;
+  color: #555;
+  margin-top: 0.5rem;
+  max-width: 70%;
+  margin-left: auto;
+  margin-right: auto;
 }
+
 
 /* ============================================
    LETTRES (lettres.html) — DataTable responsive
