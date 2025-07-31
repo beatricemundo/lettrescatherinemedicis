@@ -102,7 +102,42 @@
       }
 
       // Langue par défaut
-      setLanguage('fr');
+     const supportedLanguages = ['en', 'fr', 'it'];
+     const saveLang = localStorage.getItem('lang');
+
+     let langToUse;
+
+     if (saveLang && supportedLanguages.includes(savedLang)) {
+       langToUse = savedLang;
+     } else {
+       const browserLang = navigator.language.slice(0, 2);
+       langToUse = supportedLanguages.includes(browserLang) ? browserLang : 'en';
+     }
+
+      const langMessages = {
+        en: "Language detected : English 🇺🇸",
+        fr: "Langue détectée : Français 🇫🇷",
+        it: "Lingua rilevata: Italiano 🇮🇹"
+      };
+
+      const detectionBanner = document.createElement("div");
+      detectionBanner.id = "lang-detected";
+      detectionBanner.innerText = langMessages[langToUse];
+      document.body.appendChild(detectionBanner);
+      
+      // Fade-out dopo 1.5 secondi
+      setTimeout(() => {
+        detectionBanner.classList.add("fade-out");
+      }, 1500);
+      
+      // Rimozione definitiva dopo 2 secondi
+      setTimeout(() => {
+        detectionBanner.remove();
+      }, 2000);
+      onBanner.remove();
+            }, 2000);
+      
+      setLanguages(langToUse);
     </script>
   </body>
 </html>
