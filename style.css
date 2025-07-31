@@ -130,6 +130,27 @@ em {
   line-height: 1.3;
 }
 
+.bio-portrait {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+  margin-top: 2rem;
+}
+
+.bio-portrait img {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.bio-portrait figcaption {
+  font-size: 0.8em;
+  color: #555;
+  margin: 0;
+}
+
 /* ============================================
    LETTRES (lettres.html) — DataTable responsive
 ============================================ */
