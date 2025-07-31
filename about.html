@@ -36,8 +36,9 @@
 <body>
 
 <header class="topbar">
+  <div class="top-bar">
   <div class="hamburger" onclick="toggleMenu()">☰</div>
-  <nav class="nav-menu" id="navMenu">
+  <nav class="side-nav" id="sideNav">
     <a href="index.html">🏠 Home</a>
     <a href="lettres.html">📜 Table</a>
     <a href="texte1.html">📄 Texts</a>
@@ -49,6 +50,7 @@
     <button onclick="setLanguage('en')" aria-label="English">🇺🇸</button>
     <button onclick="setLanguage('fr')" aria-label="Français">🇫🇷</button>
     <button onclick="setLanguage('it')" aria-label="Italiano">🇮🇹</button>
+  </div>
   </div>
 </header>
 
@@ -96,7 +98,12 @@
       const langToUse = savedLang || (["en", "fr", "it"].includes(browserLang) ? browserLang : "en");
       setLanguage(langToUse);
     });
-  </script>
+
+  function toggleMenu() {
+    const nav = document.getElementById("sideNav");
+    nav.classList.toggle("open");
+  }
+</script>
 
 </body>
 </html>
