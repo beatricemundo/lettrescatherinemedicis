@@ -130,15 +130,25 @@ em {
   line-height: 1.3;
 }
 
-.bioportrait {
-  display: block;
-  float: right;
-  margin: 2rem 0 2rem 2rem;
-  width: 180px; /* più piccola di Catherine */
-  height: 180px;
+.bioportrait-wrapper {
+  float: left;
+  margin: 1.5rem 2rem 1.5rem 0;
+  width: 422.8px; /* 1057px * 0.4 */
+}
+
+.bioportrait-inline {
+  width: 100%;
+  aspect-ratio: 1057 / 1128;
   object-fit: cover;
   border-radius: 50%;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+}
+
+.bioportrait-wrapper figcaption {
+  text-align: center;
+  font-size: 0.75em;
+  color: #555;
+  margin-top: 0.4rem;
 }
 
 /* ============================================
