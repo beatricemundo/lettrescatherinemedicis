@@ -137,12 +137,15 @@ em {
 }
 
 .bioportrait-inline {
-  width: 100%;
-  aspect-ratio: 1057 / 1128;
+  width: 423px;
+  height: 451px;
   object-fit: cover;
   border-radius: 50%;
+  float: left;
+  margin: 0 1.5rem 1rem 0;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
 }
+
 
 .bioportrait-wrapper figcaption {
   text-align: center;
