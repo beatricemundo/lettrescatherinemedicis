@@ -9,9 +9,6 @@ body {
   color: #333;
 }
 
-/* ============================================
-   LAYOUT — larghezza contenuta per default
-============================================ */
 body.narrow {
   max-width: 800px;
   margin: auto;
@@ -26,9 +23,6 @@ a:hover {
   text-decoration: underline;
 }
 
-/* ============================================
-   COMPONENTI RIUTILIZZABILI
-============================================ */
 .btn {
   display: inline-block;
   margin-top: 2rem;
@@ -52,14 +46,8 @@ footer {
 }
 
 /* ============================================
-   HOMEPAGE (index.html)
+   LINGUA DETECTED BANNER
 ============================================ */
-.lang-selector {
-  position: absolute;
-  top: 1em;
-  right: 1em;
-}
-
 #lang-detected {
   position: fixed;
   top: 10px;
@@ -81,101 +69,50 @@ footer {
   opacity: 0;
 }
 
-.lang-selector button {
-  background: none;
-  border: 1px solid #999;
-  padding: 0.3em 0.6em;
-  margin-left: 0.3em;
+/* ============================================
+   HEADER / TOP BAR
+============================================ */
+.top-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: #fff;
+  padding: 0.5em 1em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  z-index: 1000;
+}
+
+.hamburger {
+  font-size: 1.5em;
   cursor: pointer;
 }
 
-header {
-  text-align: center;
-  margin-bottom: 2rem;
-}
-
-h1 {
-  font-size: 2em;
-  margin-bottom: 0.5rem;
-}
-
-em {
-  color: #555;
-}
-
 /* ============================================
-   IMG HOMEPAGE (index.html)
+   SELECTOR LINGUE (mobile + desktop)
 ============================================ */
-.portrait {
+.lang-selector {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 2rem auto;
+  gap: 0.3em;
+  position: absolute;
+  right: 1em;
+  top: 1em;
 }
 
-.portrait img {
-  width: 100%;
-  max-width: 320px; /* leggermente più grande */
-  height: auto;
-  border-radius: 4px;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
-}
-
-.portrait figcaption {
-  text-align: center;
-  font-size: 0.75em; /* più piccola */
-  color: #555;
-  margin-top: 0.4rem;
-  max-width: 320px;
-  line-height: 1.3;
-}
-
-.bioportrait-wrapper {
-  float: left;
-  margin: 1.5rem 2rem 1.5rem 0;
-  width: 422.8px; /* 1057px * 0.4 */
-}
-
-.bioportrait-inline {
-  width: 423px;
-  height: 451px;
-  object-fit: cover;
-  border-radius: 50%;
-  float: left;
-  margin: 0 1.5rem 1rem 0;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
-}
-
-
-.bioportrait-wrapper figcaption {
-  text-align: center;
-  font-size: 0.75em;
-  color: #555;
-  margin-top: 0.4rem;
-}
-
-/* ============================================
-   LETTRES (lettres.html) — DataTable responsive
-============================================ */
-#lettres_wrapper {
-  overflow-x: auto;
-  padding: 0 10px;
-}
-
-table.dataTable {
-  width: 100% !important;
-}
-
-table.dataTable td,
-table.dataTable th {
-  white-space: nowrap;
+.lang-selector button {
+  background: none;
+  border: 1px solid #aaa;
+  padding: 0.2em 0.4em;
+  font-size: 1em;
+  cursor: pointer;
 }
 
 /* ============================================
    NAVIGATION MENU RESPONSIVE
 ============================================ */
-
-/* MENU LATERALE A SINISTRA */
 .side-nav {
   position: fixed;
   top: 60px;
@@ -206,60 +143,102 @@ table.dataTable th {
   background: #555;
 }
 
-/* HAMBURGER MENU */
-.top-bar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  background: #fff;
-  padding: 0.5em 1em;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  z-index: 1000;
-}
-
-.hamburger {
-  font-size: 1.5em;
-  cursor: pointer;
-}
-
-/* SELECTOR LINGUE */
-.lang-selector {
-  display: flex;
-  gap: 0.3em;
-}
-
-.lang-selector button {
-  background: none;
-  border: 1px solid #aaa;
-  padding: 0.2em 0.4em;
-  font-size: 1em;
-  cursor: pointer;
-}
-
-/* MARGIN AL MAIN PER NON ESSERE COPERTO DAL TOPBAR */
+/* ============================================
+   CONTENUTO
+============================================ */
 main {
-  margin-top: 80px;
+  margin-top: 100px;
+  padding: 0 20px;
 }
 
-/* RESPONSIVE */
+/* ============================================
+   MENU SEMPRE VISIBILE SU DESKTOP
+============================================ */
 @media (min-width: 768px) {
   .side-nav {
-    transform: translateX(0); /* sempre visibile */
-    position: fixed;
-    left: 0;
-    top: 60px;
+    transform: none;
+    width: 180px;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
   }
+
   .hamburger {
-    display: none; /* niente hamburger su desktop */
+    display: none;
+  }
+
+  main {
+    margin-left: 200px;
   }
 }
 
 /* ============================================
-   TEXTES (textes.html) — da personalizzare
+   IMG HOMEPAGE
+============================================ */
+.portrait {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 2rem auto;
+}
+
+.portrait img {
+  width: 100%;
+  max-width: 320px;
+  height: auto;
+  border-radius: 4px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+.portrait figcaption {
+  text-align: center;
+  font-size: 0.75em;
+  color: #555;
+  margin-top: 0.4rem;
+  max-width: 320px;
+  line-height: 1.3;
+}
+
+.bioportrait-wrapper {
+  float: left;
+  margin: 1.5rem 2rem 1.5rem 0;
+  width: 422.8px;
+}
+
+.bioportrait-inline {
+  width: 423px;
+  height: 451px;
+  object-fit: cover;
+  border-radius: 50%;
+  float: left;
+  margin: 0 1.5rem 1rem 0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+}
+
+.bioportrait-wrapper figcaption {
+  text-align: center;
+  font-size: 0.75em;
+  color: #555;
+  margin-top: 0.4rem;
+}
+
+/* ============================================
+   LETTRES TABLE
+============================================ */
+#lettres_wrapper {
+  overflow-x: auto;
+  padding: 0 10px;
+}
+
+table.dataTable {
+  width: 100% !important;
+}
+
+table.dataTable td,
+table.dataTable th {
+  white-space: nowrap;
+}
+
+/* ============================================
+   TEXTES
 ============================================ */
 .textes-section {
   margin-bottom: 2rem;
