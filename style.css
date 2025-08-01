@@ -19,16 +19,42 @@ a:hover {
   text-decoration: underline;
 }
 
+* ============================================
+   HEADER
+============================================ */
+header {
+  text-align: center;
+  padding-top: 4rem;
+  padding-bottom: 2rem;
+}
+
+/* ============================================
+   MAIN CONTENT
+============================================ */
 main {
   margin-top: 80px;
   padding: 2rem 1rem;
-}
-
-/* Layout centrale per testi */
-body.narrow main {
-  max-width: 800px;
+  max-width: 960px;
   margin-left: auto;
   margin-right: auto;
+}
+
+main > section {
+  text-align: center;
+}
+
+.btn {
+  display: inline-block;
+  margin: 0.5rem;
+  padding: 0.6rem 1.2rem;
+  background-color: #ddd;
+  color: #333;
+  border-radius: 4px;
+  text-decoration: none;
+}
+
+.btn:hover {
+  background-color: #ccc;
 }
 
 /* ============================================
@@ -149,6 +175,24 @@ body.narrow main {
   font-size: 0.75em;
   color: #555;
   margin-top: 0.4rem;
+}
+
+/* ============================================
+   FOOTER
+============================================ */
+footer {
+  padding: 2rem 1rem;
+  background-color: #f0f0f0;
+  text-align: center;
+}
+
+footer p {
+  margin: 0.5rem auto;
+  max-width: 800px;
+}
+
+footer h2 {
+  margin-top: 2rem;
 }
 
 /* ============================================
