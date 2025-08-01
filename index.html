@@ -106,7 +106,6 @@
 
         function setLanguage(lang) {
           const t = translations[lang];
-          localStorage.setItem('lang', lang);
           document.getElementById("title").innerText = t.title;
           document.getElementById("subtitle").innerHTML = `<em>${t.subtitle}</em>`;
           document.getElementById("intro").innerHTML = t.intro.replace(/\n/g, "<br><br>");
@@ -120,6 +119,7 @@
           document.getElementById("acknowledgment").innerHTML = t.acknowledgment;
           document.getElementById("source-code").innerHTML = t["source-code"];
           document.getElementById("html-root").setAttribute("lang", lang);
+          localStorage.setItem('lang', lang);
         }
 
         const supportedLanguages = ['en', 'fr', 'it'];
