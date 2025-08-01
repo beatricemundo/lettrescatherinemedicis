@@ -121,6 +121,9 @@
           document.getElementById("html-root").setAttribute("lang", lang);
         }
 
+        localStorage.setItem('lang', lang);
+        }
+
         const supportedLanguages = ['en', 'fr', 'it'];
         const savedLang = localStorage.getItem('lang');
         let langToUse;
