@@ -58,7 +58,6 @@
     </footer>
 
     <script>
-      document.addEventListener("DOMContentLoaded", function () {
         const translations = {
         en: {
           title: "Letters of Catherine de' Medici",
@@ -139,6 +138,8 @@
           fr: "Langue détectée : Français 🇫🇷",
           it: "Lingua rilevata: Italiano 🇮🇹"
         };
+
+      document.addEventListener("DOMContentLoaded", function () {
 
         const detectionBanner = document.createElement("div");
         detectionBanner.id = "lang-detected";
