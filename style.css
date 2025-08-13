@@ -40,7 +40,12 @@ main {
 }
 
 main > section {
-  text-align: center;
+  text-align: left;
+}
+
+h1, #subtitle {
+   text-align: center;
+   padding: 2rem 1rem;
 }
 
 .btn {
