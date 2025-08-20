@@ -142,7 +142,7 @@ h1, #subtitle {
 
 .portrait img {
   width: 100%;
-  max-width: 320px;
+  max-width: 420px;
   height: auto;
   border-radius: 4px;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
