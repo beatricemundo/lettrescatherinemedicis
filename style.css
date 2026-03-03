@@ -1,0 +1,228 @@
+/* ============================================
+   BASE STYLES — comuni a tutte le pagine
+============================================ */
+body {
+  font-family: 'Georgia', serif;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  background-color: #f8f8f8;
+  color: #333;
+}
+
+a {
+  color: #444;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+* ============================================
+   HEADER
+============================================ */
+header {
+  text-align: center;
+  padding-top: 4rem;
+  padding-bottom: 2rem;
+}
+
+/* ============================================
+   MAIN CONTENT
+============================================ */
+main {
+  margin-top: 80px;
+  padding: 2rem 1rem;
+  max-width: 960px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+main > section {
+  text-align: left;
+}
+
+h1, #subtitle {
+   text-align: center;
+   padding: 2rem 1rem;
+}
+
+.btn {
+  display: inline-block;
+  margin: 0.5rem;
+  padding: 0.6rem 1.2rem;
+  background-color: #ddd;
+  color: #333;
+  border-radius: 4px;
+  text-decoration: none;
+}
+
+.btn:hover {
+  background-color: #ccc;
+}
+
+/* ============================================
+   TOP BAR & LANGUAGE SELECTOR
+============================================ */
+.top-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: #fff;
+  padding: 0.5em 1em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  z-index: 1000;
+}
+
+.hamburger {
+  font-size: 1.5em;
+  cursor: pointer;
+}
+
+.lang-selector {
+  display: flex;
+  gap: 0.3em;
+}
+
+.lang-selector button {
+  background: none;
+  border: 1px solid #aaa;
+  padding: 0.2em 0.4em;
+  font-size: 1em;
+  cursor: pointer;
+}
+
+/* ============================================
+   SIDE NAVIGATION MENU
+============================================ */
+.side-nav {
+  position: fixed;
+  top: 60px;
+  left: 0;
+  background: #333;
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+  z-index: 999;
+}
+
+.side-nav a {
+  color: white;
+  text-decoration: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  background: #444;
+}
+
+.side-nav a:hover {
+  background: #555;
+}
+
+.side-nav.open {
+  transform: translateX(0);
+}
+
+/* ============================================
+   IMMAGINI HOMEPAGE (index.html)
+============================================ */
+.portrait {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 2rem auto;
+}
+
+.portrait img {
+  width: 100%;
+  max-width: 420px;
+  height: auto;
+  border-radius: 4px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+.portrait figcaption {
+  text-align: center;
+  font-size: 0.75em;
+  color: #555;
+  margin-top: 0.4rem;
+  max-width: 320px;
+  line-height: 1.3;
+}
+
+.bioportrait-wrapper {
+  float: left;
+  margin: 1.5rem 2rem 1.5rem 0;
+  width: 100%;
+  max-width: 423px;
+}
+
+.bioportrait-inline {
+  width: 100%;
+  max-width: 423px;
+  height: auto;
+  object-fit: cover;
+  border-radius: 50%;
+  float: left;
+  margin: -5rem 1rem 0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+}
+
+.bioportrait-wrapper figcaption {
+  text-align: center;
+  font-size: 0.75em;
+  color: #555;
+  margin-top: 0.4rem;
+}
+
+/* ============================================
+   FOOTER
+============================================ */
+footer {
+  padding: 3rem 1rem;
+  background-color: #f0f0f0;
+  text-align: center;
+}
+
+footer p {
+  margin: 0.5rem auto;
+  max-width: 800px;
+}
+
+footer h2 {
+  margin-top: 2rem;
+}
+
+/* ============================================
+   DESKTOP VERSION
+============================================ */
+@media (min-width: 768px) {
+  .side-nav {
+    transform: none;
+    top: 60px;
+    left: 0;
+    width: 200px;
+    height: calc(100vh - 60px);
+    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+  }
+
+  .hamburger {
+    display: none;
+  }
+
+  main {
+    margin-left: 220px;
+  }
+
+  body.narrow main {
+    margin-left: calc(220px + auto);
+    margin-right: auto;
+  }
+}
